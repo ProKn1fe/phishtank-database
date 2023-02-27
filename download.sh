@@ -25,6 +25,8 @@ if [ "$CURRENT_HASH" != "$NEW_HASH" ]; then
 	echo $NEW_HASH > online-valid.json.bz2.sha256
 	bzip2 -f -k -d online-valid.json.bz2
 
+	#ls Archive/ -t | sed -e "1,$MAX_OLD_FILESd" | xargs -d '\n' rm
+
 	COMMIT_DATE=$(date "+%m-%d-%Y %H:%M:%S")
 	git add -A
 
