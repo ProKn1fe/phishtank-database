@@ -6,6 +6,9 @@ echo "Must be 2 parameters api_key and user name. "
 exit
 fi
 
+export SSH_AGENT_PID=`ps -a | grep ssh-agent | grep -o -e [0-9][0-9][0-9][0-9]`
+export SSH_AUTH_SOCK=`find /tmp/ -path '*keyring-*' -name '*ssh*' -print 2>/dev/null` 
+
 API_KEY=$1
 USER_NAME=$2
 
