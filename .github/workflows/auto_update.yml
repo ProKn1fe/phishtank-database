@@ -1,0 +1,25 @@
+name: Auto update
+
+on:
+  schedule:
+  - cron: "0 */4 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        persist-credentials: true
+    - name: Update
+      run: |
+        chmod +x download.sh
+        ./download.sh ${{ secrets.PH_API_KEY }} ${{ secrets.PH_LOGIN }}
+    - name: Push changes
+      if: env.GIT_PUSH != 'no'
+      uses: ad-m/github-push-action@master
+      with:
+        ssh: true
+        branch: ${{ github.ref }}
