@@ -13,6 +13,8 @@ jobs:
       uses: actions/checkout@v3
     - name: Update
       run: |
+        git config --local user.email "A.Zuev@stdev.su"
+        git config --local user.name "Aleksandr Zuev"
         chmod +x download.sh
         ./download.sh ${{ secrets.PH_API_KEY }} ${{ secrets.PH_LOGIN }}
     - name: Push changes
