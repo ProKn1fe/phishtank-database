@@ -31,7 +31,7 @@ if [ "$CURRENT_HASH" != "$NEW_HASH" ]; then
 	git add -A
 
 	git commit -m "Update $COMMIT_DATE"
-	git push
+	#git push
 else
 	rm new-online-valid.json.bz2
 fi
