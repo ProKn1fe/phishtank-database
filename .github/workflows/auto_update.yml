@@ -15,8 +15,8 @@ jobs:
         ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
     - name: Update
       run: |
-        git config --local user.email "A.Zuev@stdev.su"
-        git config --local user.name "Aleksandr Zuev"
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
         chmod +x download.sh
         ./download.sh ${{ secrets.PH_API_KEY }} ${{ secrets.PH_LOGIN }}
     - name: Push changes
